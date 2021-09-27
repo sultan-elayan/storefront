@@ -1,30 +1,34 @@
-import React from 'react';
-import { Navbar,Nav , Container } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { sendActiveCat } from "../store/data";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SimpleCart from './SimpleCart';
 
-const Status = props => {
+export default function Header() {
   return (
-    <div >
-      <Navbar bg="dark" variant="dark">
-    <Container>
-    <Navbar.Brand href="#home">Our Store</Navbar.Brand>
-    <Nav className="me-auto">
-    {props.categoryState.dataa.categories.map(data => 
-    (<Nav.Link variant="contained" color="secondary"  
-    onClick={() => props.sendActiveCat(data.name)} 
-    id={data.name} key={data.name}> {data.displayName} </Nav.Link >))}
-    </Nav>
-    </Container>
-  </Navbar>
-
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+          </IconButton>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            OUR STORE
+          </Typography>
+          <ShoppingCartIcon>
+            <SimpleCart/>
+          </ShoppingCartIcon>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
-const mapStateToProps = state => ({
-  categoryState: state
-});
-
-const mapDispatchToProps = { sendActiveCat } 
-export default connect(mapStateToProps, mapDispatchToProps)(Status);
 
