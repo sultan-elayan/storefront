@@ -1,11 +1,15 @@
-import dataa from './data.js'
 import {createStore, combineReducers} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import product from './data'
+import cart from './cart'
 
-let reducers = combineReducers({dataa});
+let reducers = combineReducers({
+    product:product,
+    cart:cart
+});
 
-const storee = () => {
+const store = () => {
     return createStore(reducers, composeWithDevTools())
 }
 
-export default storee();
+export default store();

@@ -1,35 +1,108 @@
-import React from 'react';
+// import * as React from 'react';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+// import Button from '@mui/material/Button';
+// import Typography from '@mui/material/Typography';
+// import { connect } from 'react-redux';
+// import { Row, Col } from 'react-bootstrap'
+// import IconButton from '@material-ui/core/IconButton';
+// import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
+// const Status = props => {
+//     return (<>
+
+//         <Row>
+//             {props.categoryState.product.products.map(data => {
+//                 if (data.category === props.categoryState.product.activeCategory)
+//                     return (
+//                         <Col className="cardMinu" sm={3}>
+//                             <Card sx={{ maxWidth: 400 }} >
+//                                 <CardMedia
+//                                     component="img"
+//                                     height="340"
+//                                     image={`${data.image}`}
+//                                 />
+//                                 <CardContent>
+//                                     <Typography gutterBottom variant="h5" component="div">
+//                                         {data.name}
+//                                     </Typography>
+//                                     <Typography variant="body2" color="text.secondary">
+//                                         {data.description}
+//                                     </Typography>
+//                                 </CardContent>
+//                                 <CardActions>
+//                                     <Button size="small">Price : {data.price}</Button>
+//                                     <Button size="small"> In Stock : {data.inStock} </Button>
+//                                 </CardActions>
+//                                     <IconButton color="primary" aria-label="add to shopping cart">
+//                                         <AddShoppingCartIcon />
+//                                     </IconButton>
+//                             </Card>
+//                         </Col>
+//                     )
+//             }
+//             )}
+//         </Row>
+//     </>
+
+//     );
+// }
+
+// const mapStateToProps = state => ({
+//     categoryState: state
+// });
+
+// export default connect(mapStateToProps)(Status);
+
+
+
+
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { connect } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Row, Col } from 'react-bootstrap'
-import './profucts.css'
+import { Row, Col } from 'react-bootstrap'
+import IconButton from '@material-ui/core/IconButton';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import cart from '../store/cart';
+
+import { increment } from '../store/action';
 
 const Status = props => {
-
     return (
         <>
-            <h2>{props.categoryState.dataa.activeCategory} </h2>
-
             <Row>
-                {props.categoryState.dataa.products.map(data => {
-                    if (data.category === props.categoryState.dataa.activeCategory)
+                {props.categoryState.product.products.map((data, idx) => {
+                    if (data.category === props.categoryState.product.activeCategory)
                         return (
-                            <Col className="cardMinu" sm={4}>
-                                <Card key={data.name} style={{ backgroundColor: "White", borderRadius: "5%", borderColor: "black", borderBlockStyle: "solid" }} >
-                                    <div className="col-12  col-lg-3 " >
-
-                                        <Card.Img style={{ width: '325px', height: '355px', marginLeft: "50px", marginTop: "12px" }} variant="top" src={`${data.image}`} />
-                                        <Card.Body style={{ width: "300px" }} >
-                                            <Card.Title>Product Name : {data.name} </Card.Title>
-                                            <Card.Text>
-                                                Price : {data.price}
-                                            </Card.Text>
-                                            <Card.Text>
-                                                In Stock : {data.inStock}
-                                            </Card.Text>
-
-                                        </Card.Body>
-                                    </div>
+                            <Col className="cardMinu" sm={3}>
+                                <Card key={idx} sx={{ maxWidth: 400 }} >
+                                    <CardMedia
+                                        component="img"
+                                        height="340"
+                                        image={`${data.image}`}
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="div">
+                                            {data.name}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {data.description}
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button size="small">Price : {data.price}</Button>
+                                        <Button size="small"> In Stock : {data.inStock} </Button>
+                                    </CardActions>
+                                    <IconButton color="primary" aria-label="add to shopping cart">
+                                        <AddShoppingCartIcon onClick={() => props.increment(data.name)} />
+                                    </IconButton>
                                 </Card>
                             </Col>
                         )
@@ -37,12 +110,16 @@ const Status = props => {
                 )}
             </Row>
         </>
-    )
+
+    );
 }
 
-
 const mapStateToProps = state => ({
-    categoryState: state
+    categoryState: state,
+    cart:state.cart
+  
 });
 
-export default connect(mapStateToProps)(Status);
+const mapDispatchToProps = {increment};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Status);
