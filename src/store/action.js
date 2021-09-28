@@ -7,17 +7,19 @@ export const sendActiveCat = (activeCategory) => {
     }
   }
 
-export const increment = (name) => {
+export const increment = (product) => {
+    // console.log("product11111111111111111111",product)
     return {
         type: 'INCREMENT',
-        payload: name
+        payload: product
+        
     }
 }
 
-export const remove = (name) => {
+export const remove = (product) => {
     return {
         type: 'REMOVE',
-        payload: name
+        payload: product
     }
 }
 
