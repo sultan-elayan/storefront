@@ -5,7 +5,7 @@
 
 [sandbox - REDUX ](https://hq70p.csb.app/)
 
-[sandbox - combined-reducers ](https://pg3g9.csb.app/)
+[sandbox - combined-reducers ](https://w3ugq.csb.app/)
 
 <hr>
 
