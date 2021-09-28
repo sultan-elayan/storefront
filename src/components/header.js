@@ -24,8 +24,8 @@ export default function Header() {
             OUR STORE
           </Typography>
           <ShoppingCartIcon>
-            <SimpleCart/>
           </ShoppingCartIcon>
+            <SimpleCart/>
         </Toolbar>
       </AppBar>
     </Box>
