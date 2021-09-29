@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap'
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import cart from '../store/cart';
+
 
 import { increment } from '../store/action';
 
