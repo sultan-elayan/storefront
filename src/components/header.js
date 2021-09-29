@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SimpleCart from './SimpleCart';
 
-export default function Header() {
+export default function Header(props ) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

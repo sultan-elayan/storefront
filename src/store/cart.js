@@ -12,14 +12,8 @@ export default (state = initialState, action) => {
   switch (type) {
 
     case 'INCREMENT':
-      const products = state.cart.map((product) => product.name);
-      if (!products.includes(payload.name)) {
-        let cartTotal = state.cartTotal + 1;
-        console.log("state.cartTotal-----------------", state.cartTotal)
-        return { cart: [...state.cart, payload], show: true, cartTotal: cartTotal };
-      }
-      return { cart: state.cart, show: true, cartTotal: state.cartTotal };
-
+      let cart=[...state.cart,payload]
+      return { cart:cart , show: state.show, cartTotal: state.cartTotal +1};
 
 
     case 'REMOVE':
@@ -28,7 +22,20 @@ export default (state = initialState, action) => {
       });
       let count = state.count - 1;
       return { cart: [...product], show: true, count: count };
+      case 'GET':
+        console.log("payload >>>> ", payload)
 
+        return { ...state, categories: payload.categories, products: payload.products, activeCategory: "electronics" };
+    case "activeCategory":
+        return { ...state, activeCategory: payload }
+
+    case "ADDTOCART":
+
+        return { ...state, categories: payload.categories, products: payload.products, }
+    case "REMOVEFROMCART":
+        return;
+    case 'PUT':
+        return payload;
 
     default:
       return { ...state };

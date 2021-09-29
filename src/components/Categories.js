@@ -1,4 +1,6 @@
-import React from 'react';
+
+
+import {React,useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { sendActiveCat } from "../store/action";

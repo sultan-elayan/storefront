@@ -1,8 +1,8 @@
 // data
 const initialState = {
   categories: [
-    { name: 'Electronics', displayName: 'ELECTRONICS', dis: "Dasdsdsd" },
-    { name: 'Food', displayName: 'FOOD', dis: "Dasdsdsd" },
+    { name: 'Electronics', displayName: 'ELECTRONICS' },
+    { name: 'Food', displayName: 'FOOD' },
 
   ],
   products: [
@@ -80,7 +80,10 @@ export default (state = initialState, action) => {
         });
         return { ...state };
 
-
+        case 'GET':
+          console.log("payload ---->" , payload)
+          return payload;
+   
     default:
       return { ...state };
   }
