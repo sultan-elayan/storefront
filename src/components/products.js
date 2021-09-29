@@ -14,6 +14,13 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { increment } from '../store/action';
 
 const Status = props => {
+    function handleClick(props) {
+
+
+        props.productDetails.push(`/image/${props.name}`)
+
+    }
+
     return (
         <>
             <Row>
@@ -21,7 +28,7 @@ const Status = props => {
                     if (data.category === props.categoryState.product.activeCategory)
                         return (
                             <Col className="cardMinu" sm={3}>
-                                <Card key={idx} sx={{ maxWidth: 400 }} >
+                                <Card key={idx} sx={{ maxWidth: 400 }} Card onClick={handleClick} >
                                     <CardMedia
                                         component="img"
                                         height="340"
@@ -68,3 +75,18 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { increment };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Status);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
