@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SimpleCart from './SimpleCart';
-
+import ShoppingCart from './ShoppingCart';
 export default function Header(props ) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -23,6 +23,7 @@ export default function Header(props ) {
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             OUR STORE
           </Typography>
+          <ShoppingCart/>
           <ShoppingCartIcon>
           </ShoppingCartIcon>
             <SimpleCart/>
